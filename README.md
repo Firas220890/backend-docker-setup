@@ -34,6 +34,15 @@ Reference image: https://ibb.co/8jgj7hx
 
 _At this stage your all the required services to run Magento should be successfully installed and started._
 
+Additionally phpmyadmin have also been setup for the ease of accessing the database.
+
+Link: 127.0.0.1:8081
+
+**Database credentials:**
+Server: mariadb
+username: mage24_user
+password: mage24_pass
+
 **Steps to install Magento:**
 
 Step 1: Navigate to folder **backend-docker-setup** if not already in it.
