@@ -169,3 +169,8 @@ Tree
 └── magento24
 ```
 
+That is it! I hope you guys had fun setting up docker based Magento environment. I am always open to feedback and learning. Any feedback will be highly appreciated :)
+
+Thank you,
+Firas,
+Senior Magento Full-Stack Developer.
