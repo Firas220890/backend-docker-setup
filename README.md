@@ -1,6 +1,6 @@
 **Docker based Magento local dev environment:**
 
-Magento 2.4.3, Nginx 1.18, PHP 7.4-fpm-buster, Mariadb 10.4, Xdebug(Phpstorm), Redis/Redisinsight, Elasticsearch, Rabbitmq, Mariadb, Phpmyadmin, Varnish.
+**Magento 2.4.3, Nginx 1.18, PHP 7.4-fpm-buster, Mariadb 10.4, Xdebug(Phpstorm), Redis/Redisinsight, Elasticsearch, Rabbitmq, Mariadb, Phpmyadmin, Varnish.**
 
 **Usage**:
 
