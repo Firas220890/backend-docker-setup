@@ -1,43 +1,64 @@
-# Magento 2.4.x Docker + MailHog + Multiple Website + Blackfire + Redis/Redisinsight + Elasticsearch + Rabbitmq
-
-Docker based Magento local dev environment:
+**Docker based Magento local dev environment:**
 
 Magento 2.4.3, Nginx 1.18, PHP 7.4-fpm-buster, Mariadb 10.4, Xdebug(Phpstorm), Redis/Redisinsight, Elasticsearch, Rabbitmq, Mariadb, Phpmyadmin, Varnish.
 
-Usage:
+**Usage**:
 
 This configuration is intended to be used as a Docker-based local development environment for Magento 2.4.3.
 
-Prerequisites:
+**Prerequisites:**
 
 This setup assumes you are running Docker on a computer with at least 6GB of RAM allocated to Docker, a dual-core, and an SSD hard drive. Download & Install Docker Desktop.
 
-This configuration has been tested on Mac Intel chip.
+_This configuration has been tested on Mac Intel chip only._
 
-For mac with M1 chip kindly add the below line for each image as below in services in docker-compose.yml file
+For mac with **M1 chip** kindly add the below line for each image as below in services in docker-compose.yml file
 
 Reference image link: https://ibb.co/7Jn1DrX
 
-* platform: linux/x86_64
+`platform: linux/x86_64`
 
-Configuration Steps:
+**Configuration Steps for Docker:**
 
-Step 1: Create folder for the project and git clone docker-backend-setup repository by using link https://github.com/Firas220890/backend-docker-setup.git
+Step 1: Create folder for the project and git clone **backend-docker-setup** repository by clicking https://github.com/Firas220890/backend-docker-setup.git
 
-Step 2: Navigate to docker-backend-setup, it consist of a folder magento24 where our magento instance will be configured at the later stage and build the docker images.
+Step 2: Navigate to **backend-docker-setup**, it consist of a folder named **magento24** where our magento instance will be configured at the later stage.
 
-  * docker-compose up --build -d
+Step 3: Build docker images by running the below cli from terminal
 
-Step 3: To view the running docker containers use docker ps on the terminal.
+`docker-compose up --build -d`
+
+Step 4: To view the running docker containers execute `docker ps` on the terminal.
 
 Reference image: https://ibb.co/8jgj7hx
 
-Step 4: Execute below command to install the fresh Magento project
+_At this stage your all the required services to run Magento should be successfully installed and started._
 
-run composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.4.3-p1 .
+**Steps to install Magento:**
+
+Step 1: Navigate to folder **backend-docker-setup** if not already in it.
+
+Step 2: Execute below command to navigate to php instance of the docker
+
+`docker exec -it php bash`
+Once the above command is executed you will be navigated to docker environment as below:
+
+`/var/www/html#`
+
+Run below commands to navigate to our directory where magento will be installed:
+
+`cd ..` - To go one step previous directory
+`cd magento24` - Navigate to magento24 directory here our Magento will be installed in next steps.
+
+Step 3: Execute below command to install the fresh Magento in **magento24** directory
+
+run `composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.4.3-p1 .`
+
 The above will download Magento 2.4.3-p1 in root directory which is magento24
-Install M2 by via CLI
-bin/magento setup:install \
+
+Install Magento 2 via CLI to do so run the below command
+
+`bin/magento setup:install \
 --db-host=mariadb \
 --db-name=mage24_db \
 --db-user=mage24_user \
@@ -57,11 +78,11 @@ bin/magento setup:install \
 --search-engine=elasticsearch7 \
 --elasticsearch-host=elasticsearch \
 --elasticsearch-port=9200 \
-&& chown -R www-data:www-data .
+&& chown -R www-data:www-data .`
 
-Step 5: Cross check if ES is configured, if not update the below setting in app/etc/env.php
+Step 4: Cross-check if ES is configured, if not update the below setting in app/etc/env.php
 
-'system' => [
+`'system' => [
                 'default' => [
                     'catalog' => [
                         'search' => [
@@ -72,42 +93,47 @@ Step 5: Cross check if ES is configured, if not update the below setting in app/
                         ]
                     ]
                 ]
-            ],
+            ],`
 
-Step 6: Make sure cache enabled
+Step 5: Make sure cache enabled
 
-* bin/magento cache:enable
+`bin/magento cache:enable`
 
-Step 7: Configure Redis default/page caching
+Step 6: Configure Redis default/page caching
 
-* php bin/magento setup:config:set --cache-backend=redis --cache-backend-redis-server=redis --cache-backend-redis-port=6379 --cache-backend-redis-db=0
-* bin/magento setup:config:set --page-cache=redis --page-cache-redis-server=redis --page-cache-redis-db=1
+`php bin/magento setup:config:set --cache-backend=redis --cache-backend-redis-server=redis --cache-backend-redis-port=6379 --cache-backend-redis-db=0`
+`bin/magento setup:config:set --page-cache=redis --page-cache-redis-server=redis --page-cache-redis-db=1`
 
-Step 8: Configure Redis for session storage
+Step 7: Configure Redis for session storage
 
-* bin/magento setup:config:set --session-save=redis --session-save-redis-host=redis --session-save-redis-port=6379 --session-save-redis-log-level=4 --session-save-redis-db=2
+`bin/magento setup:config:set --session-save=redis --session-save-redis-host=redis --session-save-redis-port=6379 --session-save-redis-log-level=4 --session-save-redis-db=2`
 
-Step 9: Run deploy.sh(get it from github ()) file via CLI
+Step 9: Run deploy.sh(which already exist in magento24 directory if not then can be downloaded from https://github.com/Firas220890/backend-docker-setup/blob/28a6d92846bf851dc5ccf50249bd1a0d09073d04/magento24/deploy.sh) file via CLI
 
-* sh deploy.sh
+`sh deploy.sh`
 
 Step 10: Configure your hosts file to add 127.0.0.1 magento2.local:
 
--> For mac: 127.0.0.1 magento2.local in /etc/hosts
+**For mac:** `127.0.0.1 magento2.local` in /etc/hosts
 
--> For Windows: 127.0.0.1 magento2.local c:\Windows\System32\Drivers\etc\hosts
+**For Windows:** `127.0.0.1 magento2.local` c:\Windows\System32\Drivers\etc\hosts
 
-Project setup is now complete and use below links to navigate to the project:
+Congratulations! Once the above steps are executed in correct order by now you should have your Dockerized Magento setup ready for development.
 
-->Open for frontend: http://magento2.local/
+**Important Links:**
 
-->Open for admin panel: http://magento2.local/admin
+**Frontend:** http://magento2.local/
 
-->Admin credentials (for fresh magento installation only this is given at the time of installing magento via CLI):
+**Backend:** http://magento2.local/admin
 
-  * username: admin
+**Admin credentials:**
 
-  * password: admin123
+username: **admin**
+password: **admin123**
+
+_Note: The above credentails are set at the time of Magento installation and can be updated as per requirement._
+
+_In case of any questions related to the environment setup please feel free to write: firasath90@gmail.com_
 
 Tree
 ```
@@ -134,4 +160,3 @@ Tree
 └── magento24
 ```
 
-In case of any questions please feel free to contact: firasath90@gmail.com
