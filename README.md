@@ -22,9 +22,9 @@ Reference image link: https://ibb.co/7Jn1DrX
 
 Configuration Steps:
 
-Step 1: Create folder for the project and git clone magento2-docker repository by clicking here
+Step 1: Create folder for the project and git clone docker-backend-setup repository by using link https://github.com/Firas220890/backend-docker-setup.git
 
-Step 2: Navigate to magento2-docker, create folder magento24 where our magento instance will be configured at the later stage and build the docker images.
+Step 2: Navigate to docker-backend-setup, it consist of a folder magento24 where our magento instance will be configured at the later stage and build the docker images.
 
   * docker-compose up --build -d
 
