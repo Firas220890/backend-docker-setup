@@ -69,6 +69,7 @@ The above will download Magento 2.4.3-p1 in root directory which is magento24
 
 Install Magento 2 via CLI to do so run the below command
 
+`
 bin/magento setup:install \
 --db-host=mariadb \
 --db-name=mage24_db \
@@ -88,7 +89,7 @@ bin/magento setup:install \
 --skip-db-validation \
 --search-engine=elasticsearch7 \
 --elasticsearch-host=elasticsearch \
---elasticsearch-port=9200 \
+--elasticsearch-port=9200 \`
 
 **Note: If it takes too long after magento is installed you can break it by pressing cltr + z for stopping chown - R command.**
 
