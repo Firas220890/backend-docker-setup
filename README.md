@@ -74,11 +74,11 @@ bin/magento setup:install \
 --db-name=mage24_db \
 --db-user=mage24_user \
 --db-password=mage24_pass \
---base-url=http://magento24.loc/ \
+--base-url=http://magento2.local/ \
 --backend-frontname=admin \
 --admin-user=admin \
 --admin-password=admin123 \
---admin-email=firas.mohammed@masafi.com \
+--admin-email=firasath90@gmail.com \
 --admin-firstname=Firas \
 --admin-lastname=Mohammed \
 --language=en_US \
