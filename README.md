@@ -22,7 +22,7 @@ Reference image link: https://ibb.co/7Jn1DrX
 
 Step 1: Create folder for the project and git clone **backend-docker-setup** repository by clicking https://github.com/Firas220890/backend-docker-setup.git
 
-Step 2: Once the repository is cloned kindly rename the file **docker.env to .env**
+Step 2: Once the repository is cloned inside **backend-docker-setup** directory kindly rename the file **docker.env to .env**
 
 Step 3: Navigate to **backend-docker-setup**, it consist of a folder named **magento24** where our magento instance will be configured at the later stage.
 
