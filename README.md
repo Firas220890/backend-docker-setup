@@ -91,6 +91,8 @@ Install Magento 2 via CLI to do so run the below command
 --elasticsearch-port=9200 \
 && chown -R www-data:www-data .`
 
+**Note: If it takes too long after magento is installed you can break it by pressing cltr + z for stopping chown - R command.**
+
 Step 4: Cross-check if ES is configured, if not update the below setting in app/etc/env.php
 
 `'system' => [
