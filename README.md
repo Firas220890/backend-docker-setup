@@ -133,6 +133,8 @@ Step 10: Configure your hosts file to add 127.0.0.1 magento2.local:
 
 Congratulations! Once the above steps are executed in correct order by now you should have your Dockerized Magento setup ready for development.
 
+Note: You may need to disable Magento_TwoFactorAuth module. `bin/magento module:disable Magento_TwoFactorAuth`
+
 **Important Links:**
 
 **Frontend:** http://magento2.local/
