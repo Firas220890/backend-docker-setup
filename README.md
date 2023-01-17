@@ -68,18 +68,17 @@ run `composer create-project --repository-url=https://repo.magento.com/ magento/
 The above will download Magento 2.4.3-p1 in root directory which is magento24
 
 Install Magento 2 via CLI to do so run the below command
-
 `
 bin/magento setup:install \
 --db-host=mariadb \
 --db-name=mage24_db \
 --db-user=mage24_user \
 --db-password=mage24_pass \
---base-url=http://magento2.local/ \
+--base-url=http://magento24.loc/ \
 --backend-frontname=admin \
 --admin-user=admin \
 --admin-password=admin123 \
---admin-email=firasath90@gmail.com \
+--admin-email=firas.mohammed@masafi.com \
 --admin-firstname=Firas \
 --admin-lastname=Mohammed \
 --language=en_US \
@@ -89,10 +88,9 @@ bin/magento setup:install \
 --skip-db-validation \
 --search-engine=elasticsearch7 \
 --elasticsearch-host=elasticsearch \
---elasticsearch-port=9200 \
-&& chown -R www-data:www-data .`
+--elasticsearch-port=9200`
 
-**Note: If it takes too long to set permission using chown after magento is installed you can break it by pressing cltr + z for stopping chown - R command.**
+**Note: If it takes too long after magento is installed you can break it by pressing cltr + z for stopping chown - R command.**
 
 Step 4: Cross-check if ES is configured, if not update the below setting in app/etc/env.php
 
