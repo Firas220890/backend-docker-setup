@@ -119,7 +119,7 @@ Step 7: Configure Redis for session storage
 
 `bin/magento setup:config:set --session-save=redis --session-save-redis-host=redis --session-save-redis-port=6379 --session-save-redis-log-level=4 --session-save-redis-db=2`
 
-Step 9: Run deploy.sh(which already exist in magento24 directory if not then can be downloaded from https://github.com/Firas220890/backend-docker-setup/blob/28a6d92846bf851dc5ccf50249bd1a0d09073d04/magento24/deploy.sh) file via CLI
+Step 9: Run deploy.sh(this can be found in the root directory of backend-docker-setup move it to magento24 directory) file via CLI
 
 `sh deploy.sh`
 
