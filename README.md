@@ -24,6 +24,8 @@ Step 1: Create folder for the project and git clone **backend-docker-setup** rep
 
 Step 2: Once the repository is cloned inside **backend-docker-setup** directory kindly rename the file **docker.env to .env**
 
+`mv docker.env .env`
+
 Step 3: Navigate to **backend-docker-setup**, it consist of a folder named **magento24** where our magento instance will be configured at the later stage.
 
 Step 4: Build docker images by running the below cli from terminal
@@ -95,17 +97,17 @@ bin/magento setup:install \
 Step 4: Cross-check if ES is configured, if not update the below setting in app/etc/env.php
 
 `'system' => [
-                'default' => [
-                    'catalog' => [
-                        'search' => [
-                            'engine' => 'elasticsearch7',
-                            'elasticsearch7_server_hostname' => 'elasticsearch',
-                            'elasticsearch7_server_port' => '9200',
-                            'elasticsearch7_index_prefix' => 'magento24_index'
-                        ]
-                    ]
-                ]
-            ],`
+'default' => [
+'catalog' => [
+'search' => [
+'engine' => 'elasticsearch7',
+'elasticsearch7_server_hostname' => 'elasticsearch',
+'elasticsearch7_server_port' => '9200',
+'elasticsearch7_index_prefix' => 'magento24_index'
+]
+]
+]
+],`
 
 Step 5: Make sure cache enabled
 
