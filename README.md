@@ -24,8 +24,6 @@ Step 1: Create folder for the project and git clone **backend-docker-setup** rep
 
 Step 2: Once the repository is cloned inside **backend-docker-setup** directory kindly rename the file **docker.env to .env**
 
-`mv docker.env .env`
-
 Step 3: Navigate to **backend-docker-setup**, it consist of a folder named **magento24** where our magento instance will be configured at the later stage.
 
 Step 4: Build docker images by running the below cli from terminal
@@ -92,41 +90,24 @@ bin/magento setup:install \
 --elasticsearch-host=elasticsearch \
 --elasticsearch-port=9200`
 
-**Note: If it takes too long after magento is installed you can break it by pressing cltr + z for stopping chown - R command.**
-
-Step 4: Cross-check if ES is configured, if not update the below setting in app/etc/env.php
-
-`'system' => [
-'default' => [
-'catalog' => [
-'search' => [
-'engine' => 'elasticsearch7',
-'elasticsearch7_server_hostname' => 'elasticsearch',
-'elasticsearch7_server_port' => '9200',
-'elasticsearch7_index_prefix' => 'magento24_index'
-]
-]
-]
-],`
-
-Step 5: Make sure cache enabled
+Step 4: Make sure cache enabled
 
 `bin/magento cache:enable`
 
-Step 6: Configure Redis default/page caching
+Step 5: Configure Redis default/page caching
 
 `php bin/magento setup:config:set --cache-backend=redis --cache-backend-redis-server=redis --cache-backend-redis-port=6379 --cache-backend-redis-db=0`
 `bin/magento setup:config:set --page-cache=redis --page-cache-redis-server=redis --page-cache-redis-db=1`
 
-Step 7: Configure Redis for session storage
+Step 6: Configure Redis for session storage
 
 `bin/magento setup:config:set --session-save=redis --session-save-redis-host=redis --session-save-redis-port=6379 --session-save-redis-log-level=4 --session-save-redis-db=2`
 
-Step 9: Run deploy.sh(this can be found in the root directory of backend-docker-setup move it to magento24 directory) file via CLI
+Step 7: Run deploy.sh(this can be found in the root directory of backend-docker-setup move it to magento24 directory) file via CLI
 
 `sh deploy.sh`
 
-Step 10: Configure your hosts file to add 127.0.0.1 magento2.local:
+Step 8: Configure your hosts file to add 127.0.0.1 magento2.local:
 
 **For mac:** `127.0.0.1 magento2.local` in /etc/hosts
 
