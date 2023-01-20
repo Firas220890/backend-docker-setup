@@ -65,6 +65,10 @@ Step 3: Execute below command to install the fresh Magento in **magento24** dire
 
 run `composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.4.3-p1 .`
 
+Repo keys: 
+Username: 35f7bf59b5eccd46ee59804f2d638472
+Password: 8e4664cffb23555079e6a739ef1179cf
+
 The above will download Magento 2.4.3-p1 in root directory which is magento24
 
 Install Magento 2 via CLI to do so run the below command
